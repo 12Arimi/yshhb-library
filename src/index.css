@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 215 25% 17%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 17%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 17%;
+
+    --primary: 215 25% 17%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 20% 97%;
+    --secondary-foreground: 215 25% 17%;
+
+    --muted: 210 20% 97%;
+    --muted-foreground: 215 14% 50%;
+
+    --accent: 210 20% 95%;
+    --accent-foreground: 215 25% 17%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 210 20% 94%;
+    --input: 210 20% 94%;
+    --ring: 215 25% 17%;
+
+    --radius: 0.375rem;
+
+    /* Custom tokens */
+    --surface-elevated: 210 20% 99%;
+    --text-tertiary: 215 10% 65%;
+    --success: 152 60% 42%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    --info: 210 80% 52%;
+    --info-foreground: 0 0% 100%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222 20% 7%;
+    --foreground: 210 20% 90%;
+    --card: 222 20% 9%;
+    --card-foreground: 210 20% 90%;
+    --popover: 222 20% 9%;
+    --popover-foreground: 210 20% 90%;
+    --primary: 210 20% 90%;
+    --primary-foreground: 222 20% 7%;
+    --secondary: 222 15% 13%;
+    --secondary-foreground: 210 20% 90%;
+    --muted: 222 15% 13%;
+    --muted-foreground: 215 10% 55%;
+    --accent: 222 15% 15%;
+    --accent-foreground: 210 20% 90%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 222 15% 16%;
+    --input: 222 15% 16%;
+    --ring: 210 20% 70%;
+    --surface-elevated: 222 15% 10%;
+    --text-tertiary: 215 10% 45%;
+    --success: 152 60% 35%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 80% 45%;
+    --warning-foreground: 0 0% 100%;
+    --info: 210 70% 45%;
+    --info-foreground: 0 0% 100%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+}
