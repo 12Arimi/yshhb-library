@@ -1,5 +1,7 @@
 import { LayoutDashboard, BookCopy, ArrowRightLeft, Users, BarChart3 } from "lucide-react";
-import type { TabKey } from "@/pages/Index";
+
+// Local type definition to resolve the 'TabKey' import error
+export type TabKey = "dashboard" | "inventory" | "issuing" | "queue" | "reports";
 
 const tabs: { key: TabKey; label: string; icon: React.ElementType }[] = [
   { key: "dashboard", label: "Dashboard", icon: LayoutDashboard },

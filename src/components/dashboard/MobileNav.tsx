@@ -1,5 +1,7 @@
 import { LayoutDashboard, BookCopy, ArrowRightLeft, Users, BarChart3 } from "lucide-react";
-import type { TabKey } from "@/pages/Index";
+
+// Defining the TabKey locally ensures the component has access to the type
+export type TabKey = "dashboard" | "inventory" | "issuing" | "queue" | "reports";
 
 const tabs: { key: TabKey; label: string; icon: React.ElementType }[] = [
   { key: "dashboard", label: "Home", icon: LayoutDashboard },
@@ -26,7 +28,7 @@ export function MobileNav({ activeTab, setActiveTab }: Props) {
           }`}
         >
           <t.icon size={18} strokeWidth={1.5} />
-          {t.label}
+          <span className="truncate w-full text-center">{t.label}</span>
         </button>
       ))}
     </nav>

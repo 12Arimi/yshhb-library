@@ -1,22 +1,19 @@
+import { useNavigate } from "react-router-dom";
 import { BookCopy, ArrowRightLeft, Users, Clock } from "lucide-react";
 import { books, transactions, reservations } from "@/data/mockData";
-import type { TabKey } from "@/pages/Index";
 
-interface Props {
-  onNavigate: (tab: TabKey) => void;
-}
-
-export function DashboardOverview({ onNavigate }: Props) {
+export function DashboardOverview() {
+  const navigate = useNavigate();
   const available = books.filter((b) => b.status === "Available").length;
   const issued = books.filter((b) => b.status === "Issued").length;
   const reserved = books.filter((b) => b.status === "Reserved").length;
   const totalQueue = reservations.reduce((s, r) => s + r.queue.length, 0);
 
   const stats = [
-    { label: "Total Books", value: books.length, icon: BookCopy, action: "inventory" as TabKey },
-    { label: "Currently Issued", value: issued, icon: ArrowRightLeft, action: "issuing" as TabKey },
-    { label: "In Queue", value: totalQueue, icon: Users, action: "queue" as TabKey },
-    { label: "Transactions", value: transactions.length, icon: Clock, action: "reports" as TabKey },
+    { label: "Total Books", value: books.length, icon: BookCopy, path: "/library/inventory" },
+    { label: "Currently Issued", value: issued, icon: ArrowRightLeft, path: "/library/issuing" },
+    { label: "In Queue", value: totalQueue, icon: Users, path: "/library/queue" },
+    { label: "Transactions", value: transactions.length, icon: Clock, path: "/library/reports" },
   ];
 
   return (
@@ -27,7 +24,7 @@ export function DashboardOverview({ onNavigate }: Props) {
         {stats.map((s) => (
           <button
             key={s.label}
-            onClick={() => onNavigate(s.action)}
+            onClick={() => navigate(s.path)}
             className="bg-background rounded-lg border border-border p-4 text-left hover:border-foreground/20 transition-colors"
           >
             <div className="flex items-center gap-2 mb-2">
@@ -40,7 +37,6 @@ export function DashboardOverview({ onNavigate }: Props) {
       </div>
 
       <div className="grid md:grid-cols-2 gap-4">
-        {/* Quick status */}
         <div className="bg-background rounded-lg border border-border p-4">
           <h2 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">Availability</h2>
           <div className="space-y-2">
@@ -60,7 +56,6 @@ export function DashboardOverview({ onNavigate }: Props) {
           </div>
         </div>
 
-        {/* Recent activity */}
         <div className="bg-background rounded-lg border border-border p-4">
           <h2 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">Recent Activity</h2>
           <div className="space-y-2.5">
