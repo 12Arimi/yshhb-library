@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Outlet, Link } from "react-router-dom";
 import { User, Home, MoreVertical, X } from "lucide-react";
-import { FinanceDesktopNav } from "@/components/finance/FinanceDesktopNav";
-import { FinanceMobileNav } from "@/components/finance/FinanceMobileNav";
+import { RegistrarDesktopNav } from "@/components/registrar/RegistrarDesktopNav";
+import { RegistrarMobileNav } from "@/components/registrar/RegistrarMobileNav";
 
-export default function FinanceLayout() {
+export default function RegistrarLayout() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -16,7 +16,7 @@ export default function FinanceLayout() {
         <Link to="/" className="flex items-center gap-4 hover:opacity-80 transition-all">
           <img src="/logo.webp" alt="YSHHB Logo" className="h-9 w-auto object-contain" />
           <span className="text-sm sm:text-base font-bold tracking-tight text-foreground uppercase border-l border-border pl-4">
-            Finance Module
+            Registrar Module
           </span>
         </Link>
 
@@ -31,10 +31,10 @@ export default function FinanceLayout() {
             <span>Switch Module</span>
           </Link>
 
-          {/* Finance Admin - Matched Structure */}
+          {/* Registrar Admin - Matched Structure */}
           <div className="flex items-center gap-2 text-xs font-medium text-muted-foreground border-l border-border pl-6">
             <User size={15} strokeWidth={1.5} />
-            <span>Finance Admin</span>
+            <span>Registrar Admin</span>
           </div>
         </div>
 
@@ -60,7 +60,7 @@ export default function FinanceLayout() {
               </Link>
               <div className="flex items-center gap-3 px-5 py-4 text-sm font-medium text-muted-foreground border-t border-border">
                 <User size={18} />
-                Finance Admin
+                Registrar Admin
               </div>
             </div>
           )}
@@ -69,7 +69,7 @@ export default function FinanceLayout() {
 
       {/* Desktop Nav (Module specific tabs) */}
       <div className="hidden md:block fixed top-14 left-0 right-0 z-40">
-        <FinanceDesktopNav />
+        <RegistrarDesktopNav />
       </div>
 
       {/* Content */}
@@ -78,7 +78,7 @@ export default function FinanceLayout() {
       </main>
 
       {/* Mobile Nav (Bottom bar) */}
-      <FinanceMobileNav />
+      <RegistrarMobileNav />
     </div>
   );
 }

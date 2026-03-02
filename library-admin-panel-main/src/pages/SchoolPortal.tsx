@@ -6,17 +6,14 @@ const modules = [
   { label: "Finance", description: "Fee collection and accounts", icon: DollarSign, path: "/finance/dashboard" },
   { label: "Registrar", description: "Student records and enrollment", icon: ClipboardList, path: "/registrar/dashboard" },
   { label: "Attendance & Exams", description: "Daily tracking, results, and reports", icon: CalendarCheck, path: "/attendance/dashboard" },
-  /* { label: "Student / Parent Portal", description: "Grades, attendance, and announcements", icon: GraduationCap, path: "#" }, 
-  */
+  { label: "Student / Parent Portal", description: "Grades, attendance, and announcements", icon: GraduationCap, path: "#" },
 ];
 
 export default function SchoolPortal() {
   return (
     <div className="min-h-screen bg-secondary flex flex-col items-center justify-center p-6">
       <div className="mb-10 text-center">
-        {/* Added the logo img here to match your module headers if needed */}
-        <img src="/logo.webp" alt="YSHHB Logo" className="h-16 w-auto mx-auto mb-4 object-contain" />
-        <h1 className="text-2xl font-semibold text-foreground tracking-tight uppercase">YSHHB ONE</h1>
+        <h1 className="text-2xl font-semibold text-foreground tracking-tight">YSHHB ONE</h1>
         <p className="text-sm text-muted-foreground mt-1">School Management Portal</p>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-lg w-full">

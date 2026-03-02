@@ -9,6 +9,7 @@ export default function LibraryLayout() {
 
   return (
     <div className="min-h-screen bg-secondary">
+      {/* Fixed Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-background border-b border-border px-4 sm:px-6 h-14 flex items-center justify-between">
         
         {/* Logo and Bold Module Title */}
@@ -37,7 +38,7 @@ export default function LibraryLayout() {
           </div>
         </div>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Menu Button (Three Dots) */}
         <div className="md:hidden relative">
           <button 
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -66,16 +67,17 @@ export default function LibraryLayout() {
         </div>
       </header>
 
-      {/* Navigation Spacer - Using Library Desktop Nav */}
+      {/* Desktop Nav (Module specific tabs) */}
       <div className="hidden md:block fixed top-14 left-0 right-0 z-40">
         <LibraryDesktopNav />
       </div>
 
+      {/* Content */}
       <main className="pt-[6.5rem] md:pt-[6.5rem] pb-20 md:pb-6 p-4 sm:p-6 max-w-7xl w-full mx-auto">
         <Outlet />
       </main>
 
-      {/* Library Mobile Nav */}
+      {/* Mobile Nav (Bottom bar) */}
       <LibraryMobileNav />
     </div>
   );
