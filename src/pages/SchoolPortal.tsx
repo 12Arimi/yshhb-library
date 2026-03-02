@@ -15,7 +15,7 @@ export default function SchoolPortal() {
     <div className="min-h-screen bg-secondary flex flex-col items-center justify-center p-6">
       <div className="mb-10 text-center">
         {/* Added the logo img here to match your module headers if needed */}
-        <img src="/logo.webp" alt="YSHHB Logo" className="h-16 w-auto mx-auto mb-4 object-contain" />
+        <img src="/brave_screenshot.png" alt="YSHHB Logo" className="h-28 sm:h-28 md:h-28 lg:h-36 xl:h-44 w-auto mx-auto mb-4 object-contain" />
         <h1 className="text-2xl font-semibold text-foreground tracking-tight uppercase">YSHHB ONE</h1>
         <p className="text-sm text-muted-foreground mt-1">School Management Portal</p>
       </div>
