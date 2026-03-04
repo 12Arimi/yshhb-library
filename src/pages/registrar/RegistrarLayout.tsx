@@ -7,8 +7,32 @@ import { RegistrarMobileNav } from "@/components/registrar/RegistrarMobileNav";
 export default function RegistrarLayout() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  // Background styling for registrar-themed SVGs (Student records, IDs, Folders)
+  const backgroundStyle = {
+    backgroundColor: "hsl(var(--secondary))",
+    backgroundImage: `
+      url('/registrar1.svg'), 
+      url('/registrar2.svg'), 
+      url('/registrar3.svg'), 
+      url('/registrar4.svg'), 
+      url('/registrar5.svg')
+    `,
+    // Scattered coordinates (X% Y%)
+    backgroundPosition: `
+      8% 25%, 
+      82% 18%, 
+      55% 82%, 
+      75% 65%, 
+      22% 70%
+    `,
+    // Sizing for administrative icons
+    backgroundSize: "95px, 105px, 85px, 100px, 90px",
+    backgroundRepeat: "no-repeat",
+    backgroundAttachment: "fixed", // Stationary background
+  };
+
   return (
-    <div className="min-h-screen bg-secondary">
+    <div className="min-h-screen relative" style={backgroundStyle}>
       {/* Fixed Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-background border-b border-border px-4 sm:px-6 h-14 flex items-center justify-between">
         
@@ -22,7 +46,6 @@ export default function RegistrarLayout() {
 
         {/* Desktop Header Actions */}
         <div className="hidden md:flex items-center gap-6">
-          {/* Switch Module */}
           <Link 
             to="/" 
             className="flex items-center gap-2 text-xs font-medium text-muted-foreground hover:text-foreground transition-colors"
@@ -31,7 +54,6 @@ export default function RegistrarLayout() {
             <span>Switch Module</span>
           </Link>
 
-          {/* Registrar Admin - Matched Structure */}
           <div className="flex items-center gap-2 text-xs font-medium text-muted-foreground border-l border-border pl-6">
             <User size={15} strokeWidth={1.5} />
             <span>Registrar Admin</span>
@@ -67,17 +89,17 @@ export default function RegistrarLayout() {
         </div>
       </header>
 
-      {/* Desktop Nav (Module specific tabs) */}
+      {/* Desktop Nav */}
       <div className="hidden md:block fixed top-14 left-0 right-0 z-40">
         <RegistrarDesktopNav />
       </div>
 
-      {/* Content */}
-      <main className="pt-[6.5rem] md:pt-[6.5rem] pb-20 md:pb-6 p-4 sm:p-6 max-w-7xl w-full mx-auto">
+      {/* Content Area */}
+      <main className="relative z-10 pt-[6.5rem] md:pt-[6.5rem] pb-20 md:pb-6 p-4 sm:p-6 max-w-7xl w-full mx-auto">
         <Outlet />
       </main>
 
-      {/* Mobile Nav (Bottom bar) */}
+      {/* Mobile Nav */}
       <RegistrarMobileNav />
     </div>
   );
