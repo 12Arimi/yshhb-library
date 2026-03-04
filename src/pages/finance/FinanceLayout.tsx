@@ -7,36 +7,26 @@ import { FinanceMobileNav } from "@/components/finance/FinanceMobileNav";
 export default function FinanceLayout() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // Background styling for finance-themed SVGs
-  const backgroundStyle = {
-    backgroundColor: "hsl(var(--secondary))",
-    backgroundImage: `
-      url('/finance1.svg'), 
-      url('/finance2.svg'), 
-      url('/finance3.svg'), 
-      url('/finance4.svg'), 
-      url('/finance5.svg')
-    `,
-    // Scattered coordinates (X% Y%)
-    backgroundPosition: `
-      12% 18%, 
-      85% 22%, 
-      50% 88%, 
-      78% 70%, 
-      18% 75%
-    `,
-    // Variable sizing for a dynamic look
-    backgroundSize: "90px, 110px, 80px, 100px, 95px",
-    backgroundRepeat: "no-repeat",
-    backgroundAttachment: "fixed", // Keeps them stationary during scroll
-  };
-
   return (
-    <div className="min-h-screen relative" style={backgroundStyle}>
+    <div className="min-h-screen bg-secondary relative overflow-hidden">
+      
+      {/* --- CUSTOM CORNER BORDER DESIGN --- */}
+      <div className="fixed inset-0 pointer-events-none z-0">
+        {/* Top Left Corner - Positioned below Header (3.5rem) and Desktop Nav (~3rem) */}
+        <div className="absolute left-4 top-[4.5rem] md:top-[7.5rem] w-8 h-8 border-t border-l border-foreground/20" />
+        
+        {/* Top Right Corner */}
+        <div className="absolute right-4 top-[4.5rem] md:top-[7.5rem] w-8 h-8 border-t border-r border-foreground/20" />
+        
+        {/* Bottom Left Corner - Positioned above Mobile Nav (~4rem) */}
+        <div className="absolute left-4 bottom-[4.5rem] md:bottom-6 w-8 h-8 border-b border-l border-foreground/20" />
+        
+        {/* Bottom Right Corner */}
+        <div className="absolute right-4 bottom-[4.5rem] md:bottom-6 w-8 h-8 border-b border-r border-foreground/20" />
+      </div>
+
       {/* Fixed Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-background border-b border-border px-4 sm:px-6 h-14 flex items-center justify-between">
-        
-        {/* Logo and Bold Module Title */}
         <Link to="/" className="flex items-center gap-4 hover:opacity-80 transition-all">
           <img src="/logo.webp" alt="YSHHB Logo" className="h-9 w-auto object-contain" />
           <span className="text-sm sm:text-base font-bold tracking-tight text-foreground uppercase border-l border-border pl-4">
@@ -93,8 +83,8 @@ export default function FinanceLayout() {
         <FinanceDesktopNav />
       </div>
 
-      {/* Content Area - Added z-10 to stay above background icons */}
-      <main className="relative z-10 pt-[6.5rem] md:pt-[6.5rem] pb-20 md:pb-6 p-4 sm:p-6 max-w-7xl w-full mx-auto">
+      {/* Main Content Area */}
+      <main className="relative z-10 pt-[6.5rem] md:pt-[7.5rem] pb-24 md:pb-10 p-4 sm:p-6 max-w-7xl w-full mx-auto">
         <Outlet />
       </main>
 

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { BookOpen, DollarSign, ClipboardList, CalendarCheck, GraduationCap } from "lucide-react";
+import { BookOpen, DollarSign, ClipboardList, CalendarCheck } from "lucide-react";
 
 const modules = [
   { label: "Library", description: "Manage books, issuing, and reservations", icon: BookOpen, path: "/library/dashboard" },
@@ -9,33 +9,25 @@ const modules = [
 ];
 
 export default function SchoolPortal() {
-  const portalBackground = {
-    backgroundColor: "hsl(var(--secondary))",
-    backgroundImage: `
-      url('/attendance3.svg'), 
-      url('/finance5.svg'), 
-      url('/registrar1.svg'), 
-      url('/attendance4.svg'),
-      url('/book2.svg')
-    `,
-    // Adjusted Y-coordinates (the second percentage) to be 40% or lower 
-    // This keeps the top area clear for the logo
-    backgroundPosition: `
-      10% 45%, 
-      90% 50%, 
-      50% 95%, 
-      85% 85%, 
-      15% 90%
-    `,
-    backgroundSize: "100px, 120px, 90px, 110px, 80px",
-    backgroundRepeat: "no-repeat",
-    backgroundAttachment: "fixed",
-  };
-
   return (
-    <div className="min-h-screen relative flex flex-col items-center p-6" style={portalBackground}>
+    <div className="min-h-screen relative flex flex-col items-center p-6 bg-secondary overflow-hidden">
       
-      {/* 1. Added mt-20 for top margin from screen edge */}
+      {/* --- CUSTOM CORNER BORDER DESIGN --- */}
+      <div className="fixed inset-0 pointer-events-none z-0">
+        {/* Top Left Corner */}
+        <div className="absolute left-6 top-6 w-12 h-12 border-t border-l border-foreground/20" />
+        
+        {/* Top Right Corner */}
+        <div className="absolute right-6 top-6 w-12 h-12 border-t border-r border-foreground/20" />
+        
+        {/* Bottom Left Corner - Adjusted for potential browser chrome/spacing */}
+        <div className="absolute left-6 bottom-6 w-12 h-12 border-b border-l border-foreground/20" />
+        
+        {/* Bottom Right Corner */}
+        <div className="absolute right-6 bottom-6 w-12 h-12 border-b border-r border-foreground/20" />
+      </div>
+
+      {/* Header Section */}
       <div className="mt-20 mb-10 text-center relative z-10">
         <img 
           src="/brave_screenshot.png" 
@@ -55,20 +47,17 @@ export default function SchoolPortal() {
 
       {/* Module Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-lg w-full relative z-10">
-        {modules.map((m) => {
-          const Wrapper = m.path === "#" ? "div" : Link;
-          return (
-            <Wrapper
-              key={m.label}
-              to={m.path as string}
-              className="bg-background border border-border rounded-lg p-5 text-left transition-all duration-300 hover:border-primary/40 hover:shadow-md hover:-translate-y-1"
-            >
-              <m.icon size={20} strokeWidth={1.5} className="text-muted-foreground mb-3" />
-              <h2 className="text-sm font-semibold text-foreground">{m.label}</h2>
-              <p className="text-xs text-muted-foreground mt-1">{m.description}</p>
-            </Wrapper>
-          );
-        })}
+        {modules.map((m) => (
+          <Link
+            key={m.label}
+            to={m.path}
+            className="bg-background border border-border rounded-lg p-5 text-left transition-all duration-300 hover:border-primary/40 hover:shadow-md hover:-translate-y-1 group"
+          >
+            <m.icon size={20} strokeWidth={1.5} className="text-muted-foreground mb-3 group-hover:text-primary transition-colors" />
+            <h2 className="text-sm font-semibold text-foreground">{m.label}</h2>
+            <p className="text-xs text-muted-foreground mt-1">{m.description}</p>
+          </Link>
+        ))}
       </div>
 
       <footer className="mt-auto py-10 opacity-40 text-[9px] uppercase tracking-widest text-foreground relative z-10">
